@@ -1,0 +1,1075 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  a4paper,
+]{scrreport}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta,arrows}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{angles,quotes}
+\pgfplotsset{grid style={dashed,mygray}}
+% Colors
+\definecolor{myblue}{rgb}{0.067,0.529,0.871}
+\definecolor{mypurple}{rgb}{0.859,0.071,0.525}
+\definecolor{myred}{rgb}{1.0, 0.13, 0.32}
+\definecolor{mygreen}{rgb}{0.01, 0.75, 0.24}
+\definecolor{myblack}{gray}{0.1}
+\definecolor{mygray}{gray}{0.8}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Fr}{Fr}
+\DeclareMathOperator{\Adh}{Adh}
+\DeclareMathOperator{\Ac}{Ac}
+\DeclareMathOperator{\sen}{sen}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabla}
+\else
+  \newcommand\tablename{Tabla}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{exercise}{Ejercicio}[chapter]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Prueba}}
+\newtheorem*{remark}{Observación}
+\newtheorem*{solution}{Solución}
+\newtheorem{refremark}{Observación}[chapter]
+\newtheorem{refsolution}{Solución}[chapter]
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{spanish}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Exámenes de Cálculo},
+  pdfauthor={Alfredo Sánchez Alberca},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Exámenes de Cálculo}
+\author{Alfredo Sánchez Alberca}
+\date{2016-07-11}
+
+\begin{document}
+\begin{titlepage}
+
+%\AddToShipoutPicture*{\put(0,0){\includegraphics[scale=0.8]{img/background2}}} % Imagen de fondo, requiere el paquete eso-pic.
+\begin{center}
+\vspace*{5cm}
+
+\Huge
+{\textbf{\textsf{Exámenes de Cálculo}}}
+
+\vspace{0.5cm}
+\LARGE
+{\textbf{\textsf{}}}
+
+\vspace{1.5cm}
+
+\includegraphics[width=0.4\textwidth]{img/logos/sticker.png}
+\end{center}
+
+\vfill
+
+\begin{flushleft}
+\begin{tabular}{ll}
+\includegraphics[width=0.1\textwidth]{img/logos/aprendeconalf.png} & \parbox[b]{5cm}{\Large\textsf{Alfredo
+Sánchez
+Alberca}\\ \textsf{asalber@ceu.es} \\ \textsf{https://aprendeconalf.es}}
+\end{tabular}
+\end{flushleft}
+\end{titlepage}
+\renewcommand*\contentsname{Tabla de contenidos}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Prefacio}\label{prefacio}
+\addcontentsline{toc}{chapter}{Prefacio}
+
+\markboth{Prefacio}{Prefacio}
+
+Colección de exámenes de Cálculo de los grados en Farmacia y
+Biotecnología, con sus soluciones.
+
+\bookmarksetup{startatroot}
+
+\chapter{\texorpdfstring{2016-11-07 Examen de
+Cálculo}{2016-11-07  Examen de Cálculo}}\label{examen-de-cuxe1lculo}
+
+Grados: Farmacia y Biotecnología
+
+\begin{exercise}[]\protect\hypertarget{exr-1}{}\label{exr-1}
+
+La relación entre la cantidad de dos sustancias \(x\) e \(y\) (en mg) en
+una reacción química viene dada por la ecuación
+
+\[
+\log(\sqrt{x^2+y^2}) = y.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Calcular la ecuación de las rectas tangente y normal a la gráfica de
+  \(y\) como función de \(x\) en el punto \((1,0)\).
+\item
+  En el mismo punto, calcular la variación aproximada que experimenta
+  \(y\) para una variación de \(x\) de 2 mg.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Recta tangente: \(y=x-1\).\\
+  Recta normal: \(y=-x+1\).
+\item
+  \(\Delta y\approx 2\) mg.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-2}{}\label{exr-2}
+
+La temperatura en cualquier punto de un espacio tridimensional viene
+dada por la función
+
+\[
+T(x,y,z)= \frac{e^{xy}}{z}
+\]
+
+Si nos encontramos en el punto \((1,1,1)\),
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  ¿cuál será la dirección en que la temperatura decrecerá lo más
+  rápidamente posible? ¿Cuál será la tasa de variación de la temperatura
+  en esa dirección? Interpretarla.
+\item
+  Calcular e interpretar la derivada direccional en la dirección en que
+  \(y\) aumenta el doble de \(x\) y \(z\) aumenta la mitad que \(x\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(-\nabla f(1,1,1)=(-e,-e,e)\). La tasa de decrecimiento es
+  \(\sqrt{3}e\).
+\item
+  Tomando el vector \(\mathbf{u}=(1,2,1/2)\),
+  \(f_{\mathbf{u}}'(1,1,1)=5e/\sqrt{21}\), lo que quiere decir que por
+  cada unidad que se avance en la dirección del vector \((1,2,1/2)\) la
+  función aumentará \(5e/\sqrt{21}\) unidades.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-3}{}\label{exr-3}
+
+El crecimiento alométrico explica la relación entre el tamaño de
+diversas partes de un organismo. Si \(x(t)\) e \(y(t)\) son los tamaños
+de dos órganos de un cuerpo de edad \(t\), la relación viene dada por la
+ecuación
+
+\[
+\frac{1}{y}\frac{dy}{dt} = k \frac{1}{x}\frac{dx}{dt},
+\]
+
+donde \(k\) es una constante positiva. Se pide:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Dar la ecuación diferencial que exprese \(y\) en función de \(x\) (es
+  decir, tomando como variable independiente \(x\) y como variable
+  dependiente \(y\)) y resolverla para \(y\).
+\item
+  Suponiendo que \(y\) es la masa de una célula y \(x\) su volumen, con
+  \(k=0.0794\), calcular \(y\) como función de \(x\), sabiendo que a la
+  edad en la que el volumen es 1000 \(\mu\)m\(^3\), la masa es 1 ng.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Ecuación diferencial: \(y'=k\dfrac{y}{x}\).\\
+  Solución general: \(y=cx^k\).
+\item
+  Solución particular: \(y=0.5778 x^{0.0794}\).
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-4}{}\label{exr-4}
+
+Estudiar los extremos relativos y puntos de silla de la función
+\(f(x,y)=e^y(y^2-x^2)\).
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\(f\) tiene un punto de silla en \((0,0)\) y un máximo local en
+\((0,-2)\).
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{\texorpdfstring{2017-01-10 Examen de
+Cálculo}{2017-01-10  Examen de Cálculo}}\label{examen-de-cuxe1lculo-1}
+
+Grados: Farmacia y Biotecnología
+
+\begin{exercise}[]\protect\hypertarget{exr-1}{}\label{exr-1}
+
+Un cultivo de bacterias crece al ritmo de la raíz cuadrada del número de
+bacterias en el cultivo. ¿Cuánto se habrá incrementado el número de
+bacterias con respecto al número inicial tras una hora del comienzo del
+cultivo? ¿Cuánto tiempo debe pasar para que el número de bacterias
+inicial se haya cuadruplicado?
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Sea \(x(t)\) el número de bacterias en el instante \(t\).\\
+Solución particular: \(x(t)=\left(\frac{t}{2}+C\right)^2\).\\
+El número de bacterias habrá aumentado \(\frac{1}{4}+C\) una hora
+después del comienzo del cultivo.\\
+El número de bacterias se habrá cuadruplicado en el instante \(t=2C\).
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-2}{}\label{exr-2}
+
+En un proceso químico, la temperatura depende de la cantidad de dos
+sustancias \(x\) e \(y\) de acuerdo a la fórmula
+\(T(x,y)=4x^3+y^3-3xy\). Teniendo en cuenta que las cantidades de \(x\)
+e \(y\) no pueden ser negativas, estudiar los extremos relativos y los
+puntos de silla de la temperatura.
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\(T\) tiene un punto de silla en \((0,0)\) y un mínimo local en
+\(\left(\frac{\sqrt[3]{4}}{4},\frac{\sqrt[3]{2}}{2}\right)\).
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-3}{}\label{exr-3}
+
+Un modelo ecológico explica el número de individuos de una población
+mediante la función
+
+\[
+f(x,t)=\dfrac{e^t}{x},
+\]
+
+donde \(t\) es el tiempo y \(x\) el número de predadores en la región.
+Calcular el valor aproximado de individuos en la población para
+\(t=0.1\) y \(x=0.9\) utilizando el polinomio de Taylor de segundo grado
+de la función en el punto \((1,0)\).
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Polinomio de Taylor de segundo orden de \(f\) en el punto \((1,0)\):
+\(P^2_{f,(1,0)}(x,t)=3-3x+2t+x^2+\frac{t^2}{2}-xt\).\\
+\(P^2_{f,(1,0)}(0.9,0.1)=1.225\).
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-4}{}\label{exr-4}
+
+Una partícula se mueve en el espacio de manera que su posición en cada
+instante \(t\) viene dado por la función
+\(f(t)=(e^{t/2}, \operatorname{sen}^2(t), \sqrt[3]{1-t})\). Se pide:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Calcular los vectores velocidad y aceleración en el instante
+  \(t=0\).\\
+  Nota: La velocidad es la variación del espacio con respecto al tiempo
+  y la aceleración es la variación de la velocidad con respecto al
+  tiempo.
+\item
+  Calcular el plano normal a la trayectoria de la partícula en el
+  instante \(t=0\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f'(t)=\left(\frac{e^{t/2}}{2},2\operatorname{sen} t \cos t, \frac{-(1-t)^{-2/3}}{3}\right)\)
+  y \(f'(0)=\left(\frac{1}{2},0,-\frac{1}{3}\right)\).\\
+  \(f''(t)=\left(\frac{e^{t/2}}{4},2(\cos^2 t-\operatorname{sen}^2 t), \frac{-2(1-t)^{-5/3}}{9}\right)\)
+  y \(f''(0)=\left(\frac{1}{4},2,-\frac{2}{9}\right)\).
+\item
+  Plano normal a la trayectoria en el instante \(t=0\): \(3x-2z=1\).
+\end{enumerate}
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{\texorpdfstring{2017-11-06 Examen de
+Cálculo}{2017-11-06  Examen de Cálculo}}\label{examen-de-cuxe1lculo-2}
+
+Grados: Farmacia y Biotecnología
+
+\begin{exercise}[]\protect\hypertarget{exr-1}{}\label{exr-1}
+
+Un adenoma (tumor benigno) suele tener forma esférica. Se sabe que a lo
+largo del tiempo el radio del adenoma varía con una tasa igual a la
+mitad de su valor en cada momento. Determinar la variación del volumen
+del tumor cuando el radio es de 5 mm.
+
+Si el radio se ha medido con un margen de error de \(\pm 0.01\) mm,
+¿cuál será el margen de error en la medición del volumen?
+
+Nota: El volumen de una esfera es \(\frac{4}{3}\pi r^3\).
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Tasa de variación del volumen: \(250\pi\) mm³/s.\\
+Error en el volumen: \(\pi\) mm³.
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-2}{}\label{exr-2}
+
+El peso de un bebé durante los primeros meses de vida crece de manera
+proporcional al inverso del peso. Un bebé pesa 3.3 kg al nacer y 4.3 kg
+después de un mes.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Calcular el peso cuando el bebé tiene un año.
+\item
+  ¿Cuánto tiempo tiene que pasar para que el bebé tenga un peso de 8 kg?
+\item
+  ¿Es el modelo del peso bueno para estudiar el cambio de peso durante
+  toda la vida de la persona?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Sea \(w(t)\) el peso del bebé en el instante \(t\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Ecuación diferencial: \(w'=\dfrac{k}{w}\).\\
+  Solución particular: \(w(t)=\sqrt{7.6t+10.89}\).\\
+  \(w(12)=10.1\) kg.
+\item
+  7 meses.
+\item
+  No, porque la función es siempre creciente.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-3}{}\label{exr-3}
+
+La función \(f(x,y)=ye^{-x^2-\frac{1}{2}y^2}\), expresa la cantidad de
+una sustancia \(z=f(x,y)\) en función de otras dos \(x\) e \(y\) en una
+reacción química.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Calcular el valor máximo local de \(z\) teniendo en cuenta que
+  \(x\geq 0\) e \(y\geq 0\).
+\item
+  ¿Cuál será la variación de \(z\) cuando \(x=1\) e \(y=0\), si
+  comenzamos a aumentar la cantidad de \(x\) al doble de ritmo de la de
+  \(y\)?
+\item
+  Calcular el polinomio de Taylor de segundo grado de \(f\) en el punto
+  \((1,0)\).
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f\) tiene un máximo local en \((0,1)\) y el máximo valor es
+  \(z=f(0,1)=1/\sqrt{e}\).
+\item
+  Derivada direccional de \(f\) en \((1,0)\) siguiendo la dirección del
+  vector \(v=(2,1)\): \(f'_v(1,0)=\frac{1}{e\sqrt{5}}\).
+\item
+  \(P^2_{f,(1,0)}(x,y)=\displaystyle\frac{-2xy+3y}{e}\).
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-4}{}\label{exr-4}
+
+Dada la función vectorial \(h(t)=(t\cos(t), \cos(t), \ln(t^2+1))\),
+calcular la ecuación de la recta tangente y del plano normal a la
+trayectoria de \(h\) en el punto \((0,1,0)\).
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Recta tangente: \((t,1,0)\).\\
+Plano normal: \(x=0\).
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{\texorpdfstring{2018-01-19 Examen de
+Cálculo}{2018-01-19  Examen de Cálculo}}\label{examen-de-cuxe1lculo-3}
+
+Grados: Farmacia y Biotecnología
+
+\begin{exercise}[]\protect\hypertarget{exr-1}{}\label{exr-1}
+
+Obtén el plano tangente a la superficie
+\(S: e^xy-zy^2+\frac{x^4}{z}=-1\) en el punto \(P=(0,1,2)\) y la recta
+tangente a la curva obtenida al intersecar \(S\) con el plano \(z=2\) en
+el mismo punto \(P\).
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Plano tangente: \(x-3y-z+5=0\).\\
+Recta tangente: \((3t,1+t)\) o \(y=\frac{x}{3}+1\).
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-2}{}\label{exr-2}
+
+Se sabe que un organismo metaboliza el alcohol a un ritmo del triple de
+la cantidad de alcohol presente en cada instante. Si en el instante
+inicial el organismo no contiene alcohol y se empieza a suministrar
+alcohol a un ritmo constante de 12 cl la hora, ¿cuánto alcohol habrá en
+el organismo al cabo de 5 horas? ¿Cuál será la máxima cantidad de
+alcohol que tendrá el organismo? ¿Cuándo alcanzará dicha cantidad?
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Sea \(y(t)\) la cantidad de alcohol en el organismo en el instante
+\(t\).\\
+Ecuación diferencial: \(y'=12-3y\).\\
+Solución: \(y(t)=4-4e^{-3t}\).\\
+\(y(5)=3.99\) cl.\\
+La cantidad máxima de alcohol será 4 cl y se alcanzará en \(t=\infty\).
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-3}{}\label{exr-3}
+
+Tres alelos \(A\), \(B\) y \(0\) determinan los cuatro grupos sanguíneos
+\(A\) (\(AA\) o \(A0\)), \(B\) (\(BB\) o \(BO\)), \(0\) (\(00\)) y
+\(AB\). La ley de Hardy-Weinberg establece que la proporción de
+individuos en una población que tiene dos alelos diferentes es
+
+\[
+p(x,y,z)=2xy+2xz+2yz
+\]
+
+donde \(x\), \(y\) y \(z\) son las proporciones de \(A\), \(B\) y \(O\)
+en la población. Calcular el máximo de \(p\) sabiendo que \(x+y+z=1\).
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Hay un mínimo local en \(\left(\frac{1}{3},\frac{1}{3}\right)\) y
+\(f\left(\frac{1}{3},\frac{1}{3}\right)=\frac{2}{3}\).
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-4}{}\label{exr-4}
+
+La ecuación
+
+\[
+\ln z - \frac{x^2y}{z}=-1
+\]
+
+expresa el equilibrio en una reacción en la que intervienen tres
+sustancias \(x\), \(y\) y \(z\). Considerando a \(z\) como una función
+implícita de \(x\) e \(y\), calcular la variación que experimenta \(z\)
+en el instante en que \(x=y=z=1\), cuando \(y\) decrece a la misma
+velocidad de que crece \(x\).
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Derivada direccional de \(z\) en \((1,1,1)\) siguiendo la dirección del
+vector \(\mathbf{v}=(1,-1)\):
+\(z'_\mathbf{v}(1,1,1)=\frac{1}{2\sqrt{2}}\).
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{\texorpdfstring{2018-12-17 Examen de
+Cálculo}{2018-12-17  Examen de Cálculo}}\label{examen-de-cuxe1lculo-4}
+
+Grados: Farmacia y Biotecnología
+
+\begin{exercise}[]\protect\hypertarget{exr-1}{}\label{exr-1}
+
+Se sabe que un organismo metaboliza el alcohol a una velocidad de la
+mitad de la cantidad presente. Si inicialmente no había nada de alcohol
+y comenzamos a introducir alcohol a un ritmo constante de 2 ml/min, ¿qué
+cantidad de alcohol habrá en el organismo transcurridos 5 minutos?
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Sea \(a(t)\) la cantidad de alcohol en el organismo en el instante
+\(t\).\\
+Ecuación diferencial: \(a'=2-a/2\).\\
+Solución: \(a(t)=4-4e^{-t/2}\).\\
+\(a(5)=3.6717\) ml.
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-2}{}\label{exr-2}
+
+La cantidad \(y\) de bacterias de tipo \(B\) (en miles) en un cultivo
+está relacionado con la cantidad \(x\) de bacterias de tipo \(A\)
+(también en miles) mediante la función \(y=f(x)\). Sabiendo que en este
+cultivo se cumple la ecuación \(x^2y^3-6x^3y^2+2xy=1\) y que
+\(f(1/2)=2\), estudiar si \(f\) podría tener un máximo relativo en
+\(x=1/2\).
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Derivada implícita:
+\(y'= \dfrac{-2xy^3+18x^2y^2+2y}{3x^2y^2-12x^3y+2x}\).\\
+\(y'(1/2)=6\neq 0\), de manera que \(f\) no tiene un máximo local en
+\(x=1/2\).
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-3}{}\label{exr-3}
+
+Se han diseñado unas cápsulas con forma piramidal con base un rectángulo
+de lados \(a=3\) cm, \(b=4\) cm, y altura \(h=6\) cm. Se pide:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ¿Cómo deben cambiar las dimensiones de la cápsula para que el volumen
+  aumente lo más rápidamente posible? ¿Cuál sería la tasa de variación
+  del volumen si cambian las dimensiones de la cápsula en la
+  proporciones anteriores?
+\item
+  Si se empiezan a cambiar las dimensiones de la cápsula de manera que
+  el lado mayor del rectángulo disminuye la mitad de lo que aumenta el
+  lado menor, y la altura aumenta el doble de lo que aumenta el lado
+  menor, ¿cuál sería la tasa de variación del volumen de la cápsula en
+  las condiciones anteriores?
+\end{enumerate}
+
+Nota: El volumen de una pirámide es \(1/3\) del área la base por la
+altura.
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\nabla V(3,4,6)=(8,6,4)\) y el volumen aumentará a razón de
+  \(|\nabla V(3,4,6)|=10.7703\) cm\(^3\)/s si cambiamos las dimensiones
+  de la cápsula siguiendo esa dirección.
+\item
+  Derivada direccional de \(V\) en \((3,4,6)\) siguiendo la dirección
+  del vector \(\mathbf{u}=(1,-1/2,2)\):
+  \(V'_{\mathbf{u}}(3,4,6)=5.6737\) cm\(^3\)/s.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-4}{}\label{exr-4}
+
+El rendimiento de una cosecha \(y\) depende de las concentraciones de
+nitrógeno \(n\) y fósforo \(p\) según la ecuación
+
+\[
+y(n,p)=\frac{np}{e^{n+p}}.
+\]
+
+Calcular el valor de \(n\) y \(p\) que maximiza el rendimiento de la
+cosecha.
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\(n=1\) y \(p=1\).
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{\texorpdfstring{2019-12-16 Examen de
+Cálculo}{2019-12-16  Examen de Cálculo}}\label{examen-de-cuxe1lculo-5}
+
+Grados: Farmacia y Biotecnología
+
+\begin{exercise}[]\protect\hypertarget{exr-1}{}\label{exr-1}
+
+Una laguna contaminada con nitratos contiene 1000 toneladas de nitratos
+disueltos en 6 millones de metros cúbicos de agua. Para descontaminar la
+laguna se empieza a introducir agua pura a razón de 100000 metros
+cúbicos por día y se saca la misma cantidad de agua contaminada.
+Suponiendo que la concentración de nitratos se mantiene uniforme en la
+laguna, ¿cuál será la cantidad de nitratos en la laguna después de 2
+semanas? Si la concentración máxima de nitratos para no considerar el
+agua contaminada es de \(0.1\) kg/m\(^3\), ¿cuándo se puede considerar
+que la laguna está descontaminada?
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Sea \(n(t)\) la cantidad de nitratos en la laguna en el instante
+\(t\).\\
+Ecuación diferencial: \(n'=-n/60\).\\
+Solución: \(n(t)=10^6 e^{-t/60}\).\\
+\(n(14)=791889.6\) kg.\\
+La laguna estará descontaminada después de \(30.6495\) días.
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-2}{}\label{exr-2}
+
+La temperatura \(T\) de una reacción depende de las concentraciones de
+dos substancias \(x\) e \(y\) estando relacionadas por la expresión
+
+\[
+T(x,y)=-x^3+4x^2y-3y^2.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Si la concentración de las substancias \(x\) e \(y\) son 2 y 1
+  respectivamente, ¿cuál tendría que ser la variación de las mismas para
+  que la temperatura se incrementase lo más rápidamente posible? ¿Cuál
+  es la variación de la temperatura si cambiamos las concentraciones en
+  esa dirección?
+\item
+  ¿Cómo tendrían que incrementarse las concentraciones para que la tasa
+  de variación de la temperatura fuese 10?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x\) e \(y\) deben cambiar siguiendo la dirección del vector
+  gradiente \(\nabla T(2,1) = (4, 10)\). A lo largo de esta dirección la
+  tasa de variación instantánea de la temperatura es
+  \(|\nabla T(2,1)|=10.77\) ºC (gr/dl)\(^{-1}\).
+\item
+  \(x\) e \(y\) deben cambiar siguiendo la dirección del vector unitario
+  \((0, 1)\), es decir, \(x\) debe mantenerse constante.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-3}{}\label{exr-3}
+
+Se administra una medicina a un enfermo y \(t\) horas después la
+concentración en sangre del principio activo viene dada por
+\(c(t) = t^2e^{-t/2}\) miligramos por mililitro. Se pide:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Calcular el valor máximo de la concentración e indicar en qué momento
+  se alcanza dicho valor máximo.
+\item
+  Estudiar la concavidad y calcular los puntos de inflexión de la
+  concentración.
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  El valor máximo se alcanza para \(t=4\) horas y \(c(4)=16e^{-2}\)
+  mg/dl.
+\item
+  Hay dos puntos de inflexión en \(t=1.1716\) y \(t=6.8284\).\\
+  La función es cóncava hacia arriba en
+  \((-\infty, 1.1716) \cup (6.8284, \infty)\) y cóncava hacia abajo en
+  \((1.1716, 6.8284)\).
+\end{enumerate}
+
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{\texorpdfstring{2021-01-18 Examen de
+Cálculo}{2021-01-18  Examen de Cálculo}}\label{examen-de-cuxe1lculo-6}
+
+Grados: Farmacia y Biotecnología
+
+\begin{exercise}[]\protect\hypertarget{exr-1}{}\label{exr-1}
+
+Un medicamento se administra por vía intravenosa a una velocidad de 15
+mg/hora. Al mismo tiempo, el cuerpo metaboliza el medicamento a una
+velocidad del 80\% de la cantidad presente en el cuerpo por hora.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Si el medicamento se administra de forma indefinida y suponiendo que
+  al principio no había nada de medicamento en el cuerpo, ¿cuál será la
+  máxima cantidad de medicamento que habrá en el cuerpo?
+\item
+  Si el medicamento deja de administrarse después de haber administrado
+  150 mg, ¿cuánto tiempo tiene que pasar desde ese momento hasta que la
+  cantidad de medicamento en el cuerpo sea 10 mg?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+Sea \(x(t)\) la cantidad de medicamento en el cuerpo en el instante
+\(t\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Ecuación diferencial: \(x'=15-0.8x\). Condición inicial \(x(0)=0\).
+  Solución particular: \(x(t)=18.75-18.75e^{-0.8t}\) y la cantidad
+  máxima de medicamento en el cuerpo será 18.75 mg.
+\item
+  Ecuación diferencial: \(x'=-0.8x\). Condición inicial \(x(0)=18.74\).
+  Solución particular: \(x(t)=18.74e^{-0.8t}\) y el tiempo que tarda en
+  haber una cantidad de 10 mg en el cuerpo es \(0.7851\) horas.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Resolución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\url{https://www.youtube.com/watch?v=RlqKkf1Sxpk}
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-2}{}\label{exr-2}
+
+La función \(T(x,y)=\ln(3xy+2x^2-y)\) da la temperatura de la superficie
+de una montaña en la latitud \(x\) y longitud \(y\). Unos montañeros
+están perdidos en la posición \((1,2)\) y corren el riesgo de morir
+congelados.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  ¿En qué dirección deben moverse para evitar el riesgo de congelación
+  lo más rápidamente posible?
+\item
+  Si se mueven en una dirección equivocada de manera que la longitud
+  decrece la mitad de lo que aumenta la latitud, ¿aumentará o disminuirá
+  el riesgo de hipotermia?
+\item
+  ¿En qué dirección deben moverse para que la temperatura permanezca
+  constante?
+\end{enumerate}
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\nabla T(1,2)=\frac{1}{3}(5,1)\).
+\item
+  Sea \(\mathbf{u}\) el vector \((1,-1/2)\), entonces
+  \(T'_{\mathbf{u}}(1,2) = \frac{3}{\sqrt{5}}\) ºC.
+\item
+  Siguiendo la dirección del vector \((1,-5)\).
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Resolución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\url{https://www.youtube.com/watch?v=NQ5ra7-IiOY}
+
+\end{tcolorbox}
+
+\begin{exercise}[]\protect\hypertarget{exr-3}{}\label{exr-3}
+
+Una pelota de playa tiene un volumen de 50 dm\(^3\) en el momento que
+empieza a introducirse aire a razón de 2 dm\(^3\)/min.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  ¿A qué velocidad cambiará el radio?
+\item
+  ¿Aproximadamente cuándo la superficie de la pelota se habrá duplicado?
+\end{enumerate}
+
+Nota: El volumen de una esfera es \(V(r)=\frac{4}{3}\pi r^3\) y la
+superficie \(S(r)=4\pi r^2\).
+
+\end{exercise}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-tip-color-frame, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Solución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\dfrac{dr}{dt}=0.0305\) dm/min.
+\item
+  Usando la aproximación lineal del diferencial \(dt = S'/dS=37.5013\)
+  minutos aproximadamente.
+\end{enumerate}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, arc=.35mm, colback=white, left=2mm, opacityback=0, breakable, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Resolución}, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toprule=.15mm]
+
+\url{https://www.youtube.com/watch?v=JJK5kPhko0M}
+
+\end{tcolorbox}
+
+
+
+
+\end{document}
